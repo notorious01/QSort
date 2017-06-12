@@ -1,51 +1,35 @@
-#include <quick.hpp>
+#include <qSort.hpp>
 #include <catch.hpp>
-SCENARIO("NULL")
-{
-	int a[10] = { 1, 5, 6, 9 ,7, 2, 0 ,4, 5, 7 };
-	int b[10] = { 9, 7, 7, 6, 5 ,5,  4, 2, 1, 0 };
-	quickSort(&a[0], &a[9]);
-	for (int i=0; i < 10; i++)
-	{
-		REQUIRE(a[i] == b[i]);
-	}
 
-}
-SCENARIO("NULL1")
+
+SCENARIO("mas")
 {
-	int a[3][3];
-	a[0][0]=1; a[0][1]=2; a[0][2]=3;
-	a[1][0]=4; a[1][1]=5; a[1][2]=6;
-	a[2][0]=7; a[2][1]=8; a[2][2]=9;
-	for (int i = 0; i < 3; ++i)
-	{
-		for (int j = 0; j < 3; ++j)
-			quickSort(&a[i][0], &a[i][2]);
-	}
-	REQUIRE(a[0][0] == 3); 
-	REQUIRE(a[0][1] == 2);
-	REQUIRE(a[0][2] == 1);
-	REQUIRE(a[1][0] == 6);
-	REQUIRE(a[1][1] == 5); 
-	REQUIRE(a[1][2] == 4);
-	REQUIRE(a[2][0] == 9); 
-	REQUIRE(a[2][1] == 8); 
-	REQUIRE(a[2][2] == 7);
+	int m[] = { 7,2,4,3,5 };
+	int* f=m;
+	int* l=m+4;
+	q_Sort(f, l);
+	REQUIRE(m[0] == 2);
+	REQUIRE(m[1] == 3);
+	REQUIRE(m[2] == 4);
+	REQUIRE(m[3] == 5);
+	REQUIRE(m[4] == 7);
+	
 }
-SCENARIO("NULL2")
+SCENARIO("matr")
 {
-	int a[3][3];
-	a[0][0] = 1; a[0][1] = 2; a[0][2] = 3;
-	a[1][0] = 4; a[1][1] = 5; a[1][2] = 6;
-	a[2][0] = 7; a[2][1] = 8; a[2][2] = 9;		
-	quickSort(&a[0][0], &a[2][2]);
-	REQUIRE(a[0][0] == 9); 
-	REQUIRE(a[0][1] == 8);
-	REQUIRE(a[0][2] == 7);
-	REQUIRE(a[1][0] == 6);
-	REQUIRE(a[1][1] == 5); 
-	REQUIRE(a[1][2] == 4);
-	REQUIRE(a[2][0] == 3); 
-	REQUIRE(a[2][1] == 2); 
-	REQUIRE(a[2][2] == 1);
+ 	int mas[3][3] = { 9,6,3,4,82,16,7,91,8 };
+	int * fir = &mas[0][0];
+	int * las = &mas[2][2];
+	q_Sort(fir, las);
+	REQUIRE(mas[0][0] == 3);
+	REQUIRE(mas[0][1] == 4);
+	REQUIRE(mas[0][2] == 6);
+	REQUIRE(mas[1][0] == 7);
+	REQUIRE(mas[1][1] == 8);
+	REQUIRE(mas[1][2] == 9);
+	REQUIRE(mas[2][0] == 16);
+	REQUIRE(mas[2][1] == 82);
+	REQUIRE(mas[2][2] == 91);
+
+	
 }
