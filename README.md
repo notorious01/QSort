@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/notorious01/QSort.svg?branch=master)](https://travis-ci.org/notorious01/QSort)
+
+
+[![Build Status](https://travis-ci.org/NeverMore27/iter_sort.svg?branch=master)](https://travis-ci.org/NeverMore27/iter_sort)
 
 Сортировка вставками по уменьшению:
 - [x] Вектор
