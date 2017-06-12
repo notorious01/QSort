@@ -1,31 +1,51 @@
-#include <iteratorsort.hpp>
+#include <quick.hpp>
 #include <catch.hpp>
+SCENARIO("NULL")
+{
+	int a[10] = { 1, 5, 6, 9 ,7, 2, 0 ,4, 5, 7 };
+	int b[10] = { 9, 7, 7, 6, 5 ,5,  4, 2, 1, 0 };
+	quickSort(&a[0], &a[9]);
+	for (int i=0; i < 10; i++)
+	{
+		REQUIRE(a[i] == b[i]);
+	}
 
-SCENARIO ("array")
-{
-  int a[] = {3, 2, 4, 5, 6};
-  int* s=a;
-  int* l=a+5;
- insertion_sort(s,l);
- REQUIRE(a[0] == 2);
- REQUIRE(a[1] == 3);
- REQUIRE(a[2] == 4);
- REQUIRE(a[3] == 5);
- REQUIRE(a[4] == 6);
 }
-SCENARIO("matr")
+SCENARIO("NULL1")
 {
-  int arr[3][3] = {4, 21, 12, 5, 2, 7, 42, 26, 8};
-  int * beg = &arr[0][0];
-  int * end = &arr[2][3];
-  insertion_sort(beg,end);
-  REQUIRE(arr[0][0] == 2);
-  REQUIRE(arr[0][1] == 4);
-  REQUIRE(arr[0][2] == 5);
-  REQUIRE(arr[1][0] == 7);
-  REQUIRE(arr[1][1] == 8);
-  REQUIRE(arr[1][2] == 12);
-  REQUIRE(arr[2][0] == 21);
-  REQUIRE(arr[2][1] == 26);
-  REQUIRE(arr[2][2] == 42);
+	int a[3][3];
+	a[0][0]=1; a[0][1]=2; a[0][2]=3;
+	a[1][0]=4; a[1][1]=5; a[1][2]=6;
+	a[2][0]=7; a[2][1]=8; a[2][2]=9;
+	for (int i = 0; i < 3; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+			quickSort(&a[i][0], &a[i][2]);
+	}
+	REQUIRE(a[0][0] == 3); 
+	REQUIRE(a[0][1] == 2);
+	REQUIRE(a[0][2] == 1);
+	REQUIRE(a[1][0] == 6);
+	REQUIRE(a[1][1] == 5); 
+	REQUIRE(a[1][2] == 4);
+	REQUIRE(a[2][0] == 9); 
+	REQUIRE(a[2][1] == 8); 
+	REQUIRE(a[2][2] == 7);
+}
+SCENARIO("NULL2")
+{
+	int a[3][3];
+	a[0][0] = 1; a[0][1] = 2; a[0][2] = 3;
+	a[1][0] = 4; a[1][1] = 5; a[1][2] = 6;
+	a[2][0] = 7; a[2][1] = 8; a[2][2] = 9;		
+	quickSort(&a[0][0], &a[2][2]);
+	REQUIRE(a[0][0] == 9); 
+	REQUIRE(a[0][1] == 8);
+	REQUIRE(a[0][2] == 7);
+	REQUIRE(a[1][0] == 6);
+	REQUIRE(a[1][1] == 5); 
+	REQUIRE(a[1][2] == 4);
+	REQUIRE(a[2][0] == 3); 
+	REQUIRE(a[2][1] == 2); 
+	REQUIRE(a[2][2] == 1);
 }
